@@ -1,1 +1,320 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Pix Broker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white min-h-screen flex flex-col">
+
+    <div id="welcome-overlay" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center text-center p-6 transition-opacity duration-700">
+        <div class="relative w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-400 rounded-2xl flex items-center justify-center p-4 mb-6 shadow-2xl shadow-cyan-500/30 animate-bounce">
+            <i class="fa-solid fa-chart-line text-4xl text-slate-950"></i>
+        </div>
+        <h1 class="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 mb-3 tracking-wide animate-pulse">
+            Bienvenido futuro trader, vamos a operar
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base font-medium">Cargando plataforma de alta precisión...</p>
+    </div>
+
+    <header class="border-b border-blue-900/40 bg-slate-900/80 backdrop-blur-md sticky top-0 z-30 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-9 h-9 bg-gradient-to-br from-blue-900 to-slate-900 border border-cyan-500/40 rounded-lg flex items-center justify-center p-1.5 shadow-md shadow-cyan-500/10">
+                <i class="fa-solid fa-bolt text-cyan-400 text-lg"></i>
+            </div>
+            <span class="text-lg font-black tracking-wider">PIX <span class="text-cyan-400">BROKER</span></span>
+        </div>
+
+        <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-950 border border-blue-900/60 rounded-xl flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all focus:outline-none">
+            <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+    </header>
+
+    <div id="side-menu" class="fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none">
+        <div onclick="toggleMenu()" id="menu-backdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-auto"></div>
+        
+        <div class="absolute right-0 top-0 h-full w-72 bg-slate-900 border-l border-blue-900/50 p-6 flex flex-col justify-between shadow-2xl pointer-events-auto">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-blue-900/40 pb-4">
+                    <span class="text-sm font-bold uppercase tracking-wider text-slate-400">Menú Principal</span>
+                    <button onclick="toggleMenu()" class="text-slate-400 hover:text-white text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <nav class="space-y-2">
+                    <button onclick="showSection('inicio')" class="menu-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all text-cyan-400 bg-blue-900/30 border border-cyan-500/30">
+                        <i class="fa-solid fa-house w-5"></i> Inicio
+                    </button>
+                    <button onclick="showSection('mercado')" class="menu-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:bg-slate-950 hover:text-cyan-400">
+                        <i class="fa-solid fa-chart-candlestick w-5"></i> Mercado
+                    </button>
+                    <button onclick="showSection('perfil')" class="menu-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:bg-slate-950 hover:text-cyan-400">
+                        <i class="fa-solid fa-user-gear w-5"></i> Mi Perfil
+                    </button>
+                </nav>
+            </div>
+
+            <div class="border-t border-blue-900/40 pt-4">
+                <button onclick="cerrarSesion()" class="w-full flex items-center justify-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 font-bold py-3 rounded-xl transition-all text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+        <section id="sec-inicio" class="space-y-6">
+            <div class="bg-gradient-to-r from-slate-900 via-blue-950/60 to-slate-900 p-6 rounded-3xl border border-blue-900/50 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <p class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-1">Panel del Trader</p>
+                <h2 class="text-2xl md:text-3xl font-black text-white">
+                    Bienvenido <span id="user-display-name" class="text-cyan-400">Cargando...</span>
+                </h2>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-900/90 via-slate-900 to-slate-950 p-6 md:p-8 rounded-3xl border-2 border-cyan-500/40 shadow-2xl shadow-cyan-500/10 relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-wallet text-cyan-400"></i> Saldo Para Operar
+                    </span>
+                    <button onclick="toggleSaldoVisibilidad()" class="text-xs text-slate-400 hover:text-cyan-400 transition-colors">
+                        <i id="saldo-icon" class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-baseline gap-2 my-2">
+                    <span class="text-slate-400 text-xl font-bold">$</span>
+                    <span id="user-saldo" class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyan-300 tracking-tight">
+                        0.00
+                    </span>
+                    <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-2 py-0.5 rounded-full ml-2">ARS</span>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <button onclick="showSection('mercado')" class="flex-1 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white text-xs font-bold py-3 px-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> Operar Ahora
+                    </button>
+                    <a href="https://t.me/ganaplatacondiego" target="_blank" class="flex-1 bg-slate-950 hover:bg-slate-900 text-slate-300 border border-blue-900/60 text-xs font-bold py-3 px-4 rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-telegram text-cyan-400"></i> Depositar / Retirar
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Estado de Cuenta</p>
+                        <p class="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Verificado
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 rounded-xl flex items-center justify-center text-cyan-400">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Asesor Directo</p>
+                        <p class="text-sm font-bold text-white">Activo 24/7</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
+                    <div class="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-xl flex items-center justify-center text-blue-400">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Conexión Broker</p>
+                        <p class="text-sm font-bold text-white">Ultra Rápida</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-mercado" class="space-y-4 hidden">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-candlestick text-cyan-400"></i> Mercado Financiero
+                </h3>
+                <span class="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full font-semibold">
+                    • Tiempo Real
+                </span>
+            </div>
+
+            <div class="bg-slate-900 border border-blue-900/50 rounded-3xl p-2 h-[500px] shadow-2xl relative overflow-hidden">
+                <div class="tradingview-widget-container h-full w-full">
+                    <div id="tradingview_chart" class="h-full w-full"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                        new TradingView.widget({
+                            "autosize": true,
+                            "symbol": "BINANCE:BTCUSDT",
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "dark",
+                            "style": "1",
+                            "locale": "es",
+                            "toolbar_bg": "#0f172a",
+                            "enable_publishing": false,
+                            "allow_symbol_change": true,
+                            "container_id": "tradingview_chart"
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-perfil" class="space-y-4 hidden">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-id-card text-cyan-400"></i> Mi Perfil Registrado
+            </h3>
+
+            <div class="bg-slate-900/90 border border-blue-900/50 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
+                <div class="flex items-center gap-4 border-b border-blue-900/40 pb-6">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-400 rounded-full flex items-center justify-center text-2xl font-black text-slate-950 shadow-lg shadow-cyan-500/20">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <h4 id="profile-nombre" class="text-lg font-bold text-white">---</h4>
+                        <p id="profile-usuario" class="text-xs text-slate-400">---</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-slate-950/80 p-4 rounded-xl border border-blue-900/30">
+                        <span class="text-xs text-slate-500 block uppercase font-bold">DNI / Identificación</span>
+                        <span id="profile-dni" class="text-slate-200 font-semibold">---</span>
+                    </div>
+
+                    <div class="bg-slate-950/80 p-4 rounded-xl border border-blue-900/30">
+                        <span class="text-xs text-slate-500 block uppercase font-bold">Instagram</span>
+                        <span id="profile-instagram" class="text-cyan-400 font-semibold">---</span>
+                    </div>
+
+                    <div class="bg-slate-950/80 p-4 rounded-xl border border-blue-900/30">
+                        <span class="text-xs text-slate-500 block uppercase font-bold">Telegram</span>
+                        <span id="profile-telegram" class="text-cyan-400 font-semibold">---</span>
+                    </div>
+
+                    <div class="bg-slate-950/80 p-4 rounded-xl border border-blue-900/30">
+                        <span class="text-xs text-slate-500 block uppercase font-bold">Saldo Registrado</span>
+                        <span id="profile-saldo" class="text-emerald-400 font-bold">---</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-blue-900/40 py-4 text-center text-xs text-slate-600 mt-auto">
+        <p>&copy; 2026 Pix Broker. Panel del Trader Registrado.</p>
+    </footer>
+
+    <script>
+        let usuarioActual = null;
+        let saldoVisible = true;
+        let saldoReal = 0;
+
+        // AL CARGAR LA PÁGINA
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Ocultar bienvenida animada después de 2.5 segundos
+            setTimeout(() => {
+                const overlay = document.getElementById('welcome-overlay');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.remove(), 700);
+            }, 2500);
+
+            // 2. Cargar datos desde localStorage
+            const sessionData = localStorage.getItem('usuarioLogueado');
+
+            if (!sessionData) {
+                // Si no hay usuario logueado, redirige a login.html
+                window.location.href = 'login.html';
+                return;
+            }
+
+            usuarioActual = JSON.parse(sessionData);
+            saldoReal = usuarioActual.saldo || 0;
+
+            // 3. Renderizar datos en pantalla
+            document.getElementById('user-display-name').textContent = usuarioActual.nombre || usuarioActual.usuario;
+            actualizarSaldoDisplay();
+
+            // Cargar datos en Mi Perfil
+            document.getElementById('profile-nombre').textContent = usuarioActual.nombre || 'No registrado';
+            document.getElementById('profile-usuario').textContent = usuarioActual.usuario || 'No registrado';
+            document.getElementById('profile-dni').textContent = usuarioActual.dni || 'No registrado';
+            document.getElementById('profile-instagram').textContent = usuarioActual.instagram || 'No registrado';
+            document.getElementById('profile-telegram').textContent = usuarioActual.telegram || 'No registrado';
+            document.getElementById('profile-saldo').textContent = `$${Number(saldoReal).toLocaleString('es-AR')} ARS`;
+        });
+
+        // Alternar Menú Hamburguesa
+        function toggleMenu() {
+            const sideMenu = document.getElementById('side-menu');
+            const backdrop = document.getElementById('menu-backdrop');
+            
+            if (sideMenu.classList.contains('translate-x-full')) {
+                sideMenu.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+            } else {
+                sideMenu.classList.add('translate-x-full');
+                backdrop.classList.remove('opacity-100');
+                backdrop.classList.add('opacity-0');
+            }
+        }
+
+        // Cambiar entre Secciones (Inicio, Mercado, Perfil)
+        function showSection(section) {
+            document.getElementById('sec-inicio').classList.add('hidden');
+            document.getElementById('sec-mercado').classList.add('hidden');
+            document.getElementById('sec-perfil').classList.add('hidden');
+
+            document.getElementById(`sec-${section}`).classList.remove('hidden');
+
+            // Actualizar estilo de botones del menú
+            const buttons = document.querySelectorAll('.menu-btn');
+            buttons.forEach(btn => {
+                btn.className = 'menu-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:bg-slate-950 hover:text-cyan-400';
+            });
+
+            toggleMenu(); // Cerrar menú
+        }
+
+        // Ocultar/Mostrar Saldo
+        function toggleSaldoVisibilidad() {
+            saldoVisible = !saldoVisible;
+            actualizarSaldoDisplay();
+        }
+
+        function actualizarSaldoDisplay() {
+            const saldoElem = document.getElementById('user-saldo');
+            const iconElem = document.getElementById('saldo-icon');
+
+            if (saldoVisible) {
+                saldoElem.textContent = Number(saldoReal).toLocaleString('es-AR');
+                iconElem.className = 'fa-solid fa-eye';
+            } else {
+                saldoElem.textContent = '••••••••';
+                iconElem.className = 'fa-solid fa-eye-slash';
+            }
+        }
+
+        // Cerrar Sesión
+        function cerrarSesion() {
+            localStorage.removeItem('usuarioLogueado');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
