@@ -55,10 +55,10 @@
 
             <form id="form-login" onsubmit="handleSubmit(event)" class="space-y-5">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Usuario / Correo</label>
                     <div class="relative">
-                        <i class="fa-solid fa-envelope absolute left-4 top-3.5 text-slate-500 text-sm"></i>
-                        <input type="email" required placeholder="usuario@pixbroker.com" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
+                        <i class="fa-solid fa-user absolute left-4 top-3.5 text-slate-500 text-sm"></i>
+                        <input id="input-usuario" type="text" required placeholder="tu_usuario o correo" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
                     </div>
                     <div class="relative">
                         <i class="fa-solid fa-lock absolute left-4 top-3.5 text-slate-500 text-sm"></i>
-                        <input type="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
+                        <input id="input-password" type="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
                     </div>
                 </div>
 
@@ -138,10 +138,43 @@
             }
         }
 
-        function handleSubmit(event) {
-            event.preventDefault(); // Evita recargar la página
-            // Simula el acceso exitoso y redirige a resultados.html
-            window.location.href = 'resultados.html';
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            const userInput = document.getElementById('input-usuario').value.trim();
+            const passwordInput = document.getElementById('input-password').value.trim();
+
+            try {
+                // Petición al archivo pixes.json
+                const response = await fetch('pixes.json');
+                
+                if (!response.ok) {
+                    alert("Error al intentar leer la base de usuarios (pixes.json). Asegúrate de correr la app en un servidor local.");
+                    return;
+                }
+
+                const usuarios = await response.json();
+
+                // Búsqueda de coincidencia (por usuario o email)
+                const usuarioEncontrado = usuarios.find(u => 
+                    (u.usuario.toLowerCase() === userInput.toLowerCase()) && 
+                    (u.clave === passwordInput)
+                );
+
+                if (usuarioEncontrado) {
+                    // Guardar los datos del cliente logueado en la memoria local
+                    localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
+
+                    // Redirigir a resultados.html
+                    window.location.href = 'resultados.html';
+                } else {
+                    alert('Usuario o contraseña incorrectos. Si aún no tienes usuario, contacta al asesor en Telegram.');
+                }
+
+            } catch (error) {
+                console.error('Error en el login:', error);
+                alert('Ocurrió un error inesperado al procesar el ingreso.');
+            }
         }
     </script>
 
