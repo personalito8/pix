@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso | Pix Broker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between items-center p-4">
+
+    <div class="w-full max-w-md pt-4 flex justify-between items-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors">
+            <i class="fa-solid fa-arrow-left"></i> Volver a la página principal
+        </a>
+    </div>
+
+    <main class="w-full max-w-md my-auto py-6">
+        
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-3 group mb-4">
+                <div class="relative w-12 h-12 bg-gradient-to-br from-blue-900/80 to-slate-900 border border-blue-500/40 rounded-xl flex items-center justify-center p-2.5 shadow-lg shadow-blue-500/20 group-hover:border-cyan-400/80 transition-all">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 25 15 L 25 85 M 25 15 L 60 15 C 75 15 75 50 60 50 L 25 50" stroke="url(#logo-grad-1)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 50 85 L 50 60 L 70 35" stroke="url(#logo-grad-2)" stroke-width="10" stroke-linecap="round"/>
+                        <circle cx="70" cy="35" r="6" fill="#22d3ee" />
+                        <defs>
+                            <linearGradient id="logo-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#2563eb"/>
+                                <stop offset="100%" stop-color="#22d3ee"/>
+                            </linearGradient>
+                            <linearGradient id="logo-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#3b82f6"/>
+                                <stop offset="100%" stop-color="#38bdf8"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="text-2xl font-black tracking-wider">PIX <span class="text-cyan-400">BROKER</span></span>
+            </a>
+            <p class="text-slate-400 text-sm">Plataforma de Operaciones Financieras</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-blue-900/50 p-8 rounded-3xl shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex bg-slate-950/80 p-1 rounded-xl border border-blue-900/40 mb-6">
+                <button id="tab-login" onclick="switchTab('login')" class="flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md">
+                    Iniciar Sesión
+                </button>
+                <button id="tab-register" onclick="switchTab('register')" class="flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">
+                    Crear Cuenta
+                </button>
+            </div>
+
+            <form id="form-login" onsubmit="handleSubmit(event)" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-envelope absolute left-4 top-3.5 text-slate-500 text-sm"></i>
+                        <input type="email" required placeholder="usuario@pixbroker.com" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Contraseña</label>
+                        <a href="https://t.me/ganaplatacondiego" target="_blank" class="text-xs text-cyan-400 hover:underline">¿Olvidaste tu clave?</a>
+                    </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-4 top-3.5 text-slate-500 text-sm"></i>
+                        <input type="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="rounded border-blue-900 bg-slate-950 text-cyan-500 focus:ring-0">
+                        <span>Recordar este equipo</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/30">
+                    Ingresar al Sistema <i class="fa-solid fa-arrow-right-to-bracket ml-2"></i>
+                </button>
+            </form>
+
+            <div id="form-register" class="space-y-6 hidden text-center py-2">
+                <div class="w-16 h-16 bg-blue-500/20 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-cyan-400/30 shadow-lg shadow-cyan-500/10">
+                    <i class="fa-paper-plane fa-solid"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-lg font-bold text-white">Apertura de Cuenta Asistida</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Para garantizar la máxima seguridad y verificación de tu perfil, la creación de usuarios la realiza directamente un <strong class="text-cyan-400">asesor profesional</strong>.
+                    </p>
+                </div>
+
+                <div class="bg-slate-950/80 border border-blue-900/40 p-4 rounded-xl text-left space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center gap-2 text-slate-200 font-semibold">
+                        <i class="fa-solid fa-circle-check text-cyan-400"></i> Asignación de cuenta en minutos
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-200 font-semibold">
+                        <i class="fa-solid fa-circle-check text-cyan-400"></i> Asistencia personalizada 1 a 1
+                    </div>
+                </div>
+
+                <a href="https://t.me/ganaplatacondiego" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/30">
+                    <i class="fa-brands fa-telegram text-lg"></i> Contactar al Asesor en Telegram
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full max-w-md text-center py-4 text-xs text-slate-600">
+        <p>&copy; 2026 Pix Broker. Enrutamiento SSL de alta seguridad.</p>
+    </footer>
+
+    <script>
+        function switchTab(type) {
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+
+            if (type === 'login') {
+                formLogin.classList.remove('hidden');
+                formRegister.classList.add('hidden');
+                tabLogin.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md';
+                tabRegister.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white';
+            } else {
+                formLogin.classList.add('hidden');
+                formRegister.classList.remove('hidden');
+                tabRegister.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md';
+                tabLogin.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Evita recargar la página
+            // Simula el acceso exitoso y redirige a resultados.html
+            window.location.href = 'resultados.html';
+        }
+    </script>
+
+</body>
+</html>
