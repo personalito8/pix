@@ -1,19 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pix Broker | Invertí con seguridad y precisión</title>
+    <title>Acceso | Pix Broker</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen">
+<body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white min-h-screen flex flex-col justify-between items-center p-4">
 
-    <header class="border-b border-blue-900/40 bg-slate-950/80 backdrop-blur-md fixed w-full top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            
-            <a href="#inicio" class="flex items-center gap-3 group">
-                <div class="relative w-11 h-11 bg-gradient-to-br from-blue-900/80 to-slate-900 border border-blue-500/40 rounded-xl flex items-center justify-center p-2 shadow-lg shadow-blue-500/20 group-hover:border-cyan-400/80 transition-all">
+    <div class="w-full max-w-md pt-4 flex justify-between items-center">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors">
+            <i class="fa-solid fa-arrow-left"></i> Volver a la página principal
+        </a>
+    </div>
+
+    <main class="w-full max-w-md my-auto py-6">
+        
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-3 group mb-4">
+                <div class="relative w-12 h-12 bg-gradient-to-br from-blue-900/80 to-slate-900 border border-blue-500/40 rounded-xl flex items-center justify-center p-2.5 shadow-lg shadow-blue-500/20 group-hover:border-cyan-400/80 transition-all">
                     <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M 25 15 L 25 85 M 25 15 L 60 15 C 75 15 75 50 60 50 L 25 50" stroke="url(#logo-grad-1)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M 50 85 L 50 60 L 70 35" stroke="url(#logo-grad-2)" stroke-width="10" stroke-linecap="round"/>
@@ -30,323 +37,114 @@
                         </defs>
                     </svg>
                 </div>
-                <div class="flex items-center">
-                    <span class="text-xl font-black tracking-wider leading-none">PIX <span class="text-cyan-400">BROKER</span></span>
-                </div>
+                <span class="text-2xl font-black tracking-wider">PIX <span class="text-cyan-400">BROKER</span></span>
             </a>
-
-            <nav class="hidden lg:flex gap-6 text-sm font-medium text-slate-300">
-                <a href="#inicio" class="hover:text-cyan-400 transition-colors">Inicio</a>
-                <a href="#cotizaciones" class="hover:text-cyan-400 transition-colors">Mercados</a>
-                <a href="#nosotros" class="hover:text-cyan-400 transition-colors">Nosotros</a>
-                <a href="#servicios" class="hover:text-cyan-400 transition-colors">Servicios</a>
-                <a href="#testimonios" class="hover:text-cyan-400 transition-colors">Testimonios</a>
-                <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
-            </nav>
-
-            <a href="login.html" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-blue-600/30 hover:shadow-cyan-500/30">
-                Comenzar
-            </a>
-        </div>
-    </header>
-
-    <section id="inicio" class="pt-32 pb-12 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        <div class="md:w-1/2 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-400 text-xs font-semibold tracking-wide uppercase">
-                <i class="fa-solid fa-shield-halved"></i> Plataforma Regulada & Segura
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
-                Invertí con <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">seguridad</span> y precisión.
-            </h1>
-            <p class="text-slate-300 text-lg leading-relaxed">
-                Tu puerta de entrada al crecimiento financiero profesional. Operá en los mercados globales respaldado por tecnología algorítmica y gestión experta.
-            </p>
-            <div class="pt-4 flex flex-col sm:flex-row gap-4">
-                <a href="login.html" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold text-center transition-all shadow-lg shadow-blue-600/30">
-                    Abrir Cuenta
-                </a>
-                <a href="#servicios" class="border border-blue-800/60 hover:border-blue-600 bg-slate-900/60 px-8 py-4 rounded-xl font-semibold text-center transition-all backdrop-blur-sm">
-                    Explorar Servicios
-                </a>
-            </div>
+            <p class="text-slate-400 text-sm">Plataforma de Operaciones Financieras</p>
         </div>
 
-        <div class="md:w-1/2 w-full">
-            <div class="relative bg-gradient-to-b from-blue-900/40 via-slate-900/80 to-slate-950 border border-blue-800/50 p-8 rounded-3xl shadow-2xl backdrop-blur-xl overflow-hidden">
-                <div class="absolute -right-10 -top-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl"></div>
-                <div class="flex items-center justify-between mb-8">
-                    <div>
-                        <p class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Estado del Mercado</p>
-                        <p class="text-xl font-bold text-cyan-400">Operaciones En Vivo</p>
-                    </div>
-                    <span class="flex h-3 w-3 relative">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-                    </span>
-                </div>
-                
-                <div class="space-y-4">
-                    <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="p-3 bg-blue-500/20 text-cyan-400 rounded-xl">
-                                <i class="fa-solid fa-chart-line text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-sm">Rendimiento Promedio</p>
-                                <p class="text-xs text-slate-400">Últimos 12 meses</p>
-                            </div>
-                        </div>
-                        <span class="text-cyan-400 font-bold">+24.8%</span>
-                    </div>
+        <div class="bg-slate-900/80 border border-blue-900/50 p-8 rounded-3xl shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-                    <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="p-3 bg-blue-500/20 text-cyan-400 rounded-xl">
-                                <i class="fa-solid fa-user-check text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-sm">Traders Activos</p>
-                                <p class="text-xs text-slate-400">Verificados y operando</p>
-                            </div>
-                        </div>
-                        <span class="text-slate-200 font-bold">100% Auditados</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="cotizaciones" class="py-4 border-y border-blue-900/40 bg-slate-950/60 overflow-hidden">
-        <div class="flex whitespace-nowrap space-x-10 animate-pulse text-xs font-semibold">
-            <div class="flex items-center gap-2"><span class="text-slate-400">BTC/USD</span> <span class="text-slate-200">$94,250.00</span> <span class="text-emerald-400"><i class="fa-solid fa-caret-up"></i> +2.45%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">ETH/USD</span> <span class="text-slate-200">$3,420.50</span> <span class="text-emerald-400"><i class="fa-solid fa-caret-up"></i> +1.80%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">EUR/USD</span> <span class="text-slate-200">1.0842</span> <span class="text-rose-400"><i class="fa-solid fa-caret-down"></i> -0.15%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">S&P 500</span> <span class="text-slate-200">5,890.10</span> <span class="text-emerald-400"><i class="fa-solid fa-caret-up"></i> +0.62%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">NASDAQ</span> <span class="text-slate-200">18,520.40</span> <span class="text-emerald-400"><i class="fa-solid fa-caret-up"></i> +0.95%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">ORO (XAU/USD)</span> <span class="text-slate-200">$2,735.10</span> <span class="text-rose-400"><i class="fa-solid fa-caret-down"></i> -0.30%</span></div>
-            <div class="flex items-center gap-2"><span class="text-slate-400">AAPL</span> <span class="text-slate-200">$232.10</span> <span class="text-emerald-400"><i class="fa-solid fa-caret-up"></i> +1.12%</span></div>
-        </div>
-    </section>
-
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 rounded-2xl bg-blue-950/30 border border-blue-800/40">
-                <div class="text-4xl md:text-5xl font-extrabold text-cyan-400 mb-2">+1,200</div>
-                <p class="text-slate-200 font-medium">Operaciones Exitosas</p>
-                <p class="text-xs text-slate-400 mt-1">Ejecutadas con precisión y transparencia</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-blue-950/30 border border-blue-800/40">
-                <div class="text-4xl md:text-5xl font-extrabold text-blue-400 mb-2">100%</div>
-                <p class="text-slate-200 font-medium">Traders Verificados</p>
-                <p class="text-xs text-slate-400 mt-1">Especialistas con trayectoria comprobada</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-blue-950/30 border border-blue-800/40">
-                <div class="text-4xl md:text-5xl font-extrabold text-indigo-400 mb-2">24/7</div>
-                <p class="text-slate-200 font-medium">Monitoreo de Mercado</p>
-                <p class="text-xs text-slate-400 mt-1">Sistemas automatizados sin interrupción</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="nosotros" class="py-20 border-t border-blue-900/30">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold">
-                    Sobre Pix Broker
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Construyendo el futuro del trading inteligente</h2>
-                <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
-                    Nacimos con la visión de democratizar el acceso a herramientas financieras institucionales. Combinamos análisis algorítmico, velocidad de ejecución y una interfaz transparente para que inversores de todo nivel gestionen su capital con confianza.
-                </p>
-                <div class="grid grid-cols-2 gap-4 pt-2">
-                    <div class="border-l-2 border-cyan-400 pl-4">
-                        <p class="text-white font-bold">Transparencia</p>
-                        <p class="text-xs text-slate-400">Cero comisiones ocultas en cada operación.</p>
-                    </div>
-                    <div class="border-l-2 border-blue-500 pl-4">
-                        <p class="text-white font-bold">Innovación</p>
-                        <p class="text-xs text-slate-400">Infraestructura algorítmica de última generación.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-gradient-to-br from-blue-900/20 to-slate-900 p-8 rounded-3xl border border-blue-800/40 space-y-6">
-                <h3 class="text-xl font-bold text-cyan-400">Nuestros Pilares</h3>
-                <div class="space-y-4 text-sm text-slate-300">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-shield text-cyan-400 mt-1"></i>
-                        <p><strong class="text-white">Seguridad de Grado Bancario:</strong> Encriptación SSL de 256 bits y cuentas segregadas.</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-microchip text-blue-400 mt-1"></i>
-                        <p><strong class="text-white">Ejecución en Milisegundos:</strong> Enrutamiento directo al mercado global para evitar deslizamientos.</p>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-user-shield text-indigo-400 mt-1"></i>
-                        <p><strong class="text-white">Soporte Humano:</strong> Acompañamiento especializado en cada etapa de tu estrategia.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-20 px-6 max-w-7xl mx-auto border-t border-blue-900/30">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Soluciones de Inversión Avanzadas</h2>
-            <p class="text-slate-400">Ofrecemos herramientas diseñadas para potenciar tu capital sin importar tu nivel de experiencia.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-slate-900/50 border border-blue-900/30 hover:border-cyan-500/50 p-8 rounded-3xl transition-all hover:-translate-y-1">
-                <div class="w-12 h-12 bg-blue-600/20 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-2xl">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-white">Trading Algorítmico</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Ejecución automática de órdenes basadas en parámetros técnicos optimizados en tiempo real.</p>
+            <div class="flex bg-slate-950/80 p-1 rounded-xl border border-blue-900/40 mb-6">
+                <button id="tab-login" onclick="switchTab('login')" class="flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md">
+                    Iniciar Sesión
+                </button>
+                <button id="tab-register" onclick="switchTab('register')" class="flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">
+                    Crear Cuenta
+                </button>
             </div>
 
-            <div class="bg-slate-900/50 border border-blue-900/30 hover:border-cyan-500/50 p-8 rounded-3xl transition-all hover:-translate-y-1">
-                <div class="w-12 h-12 bg-blue-600/20 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-2xl">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-white">Gestión de Portafolios</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Estrategias diversificadas adaptadas a tu perfil de riesgo individual con reporte transparente.</p>
-            </div>
-
-            <div class="bg-slate-900/50 border border-blue-900/30 hover:border-cyan-500/50 p-8 rounded-3xl transition-all hover:-translate-y-1">
-                <div class="w-12 h-12 bg-blue-600/20 text-cyan-400 rounded-2xl flex items-center justify-center mb-6 text-2xl">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3 text-white">Custodia Segura</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">Protección de activos con infraestructura institucional y encriptación de grado bancario.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonios" class="py-20 bg-slate-900/20 border-t border-blue-900/30">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Lo que opinan nuestros inversores</h2>
-                <p class="text-slate-400">Experiencias reales de clientes que operan a diario en nuestra plataforma.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-900/80 border border-blue-900/40 p-6 rounded-2xl relative space-y-4">
-                    <div class="flex text-cyan-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">"La velocidad de ejecución es fantástica. El panel es súper claro y poder monitorear los resultados sin complicaciones cambió mi forma de operar."</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-blue-600/40 border border-cyan-400 flex items-center justify-center font-bold text-cyan-400">MC</div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Martín C.</p>
-                            <p class="text-xs text-cyan-400">Inversor desde 2024</p>
-                        </div>
+            <form id="form-login" onsubmit="handleSubmit(event)" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-envelope absolute left-4 top-3.5 text-slate-500 text-sm"></i>
+                        <input type="email" required placeholder="usuario@pixbroker.com" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
                     </div>
                 </div>
 
-                <div class="bg-slate-900/80 border border-blue-900/40 p-6 rounded-2xl relative space-y-4">
-                    <div class="flex text-cyan-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Contraseña</label>
+                        <a href="https://t.me/ganaplatacondiego" target="_blank" class="text-xs text-cyan-400 hover:underline">¿Olvidaste tu clave?</a>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">"Lo que más me transmite tranquilidad es la transparencia. No hay costos ocultos y el soporte responde al instante cuando tengo alguna duda."</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-blue-600/40 border border-cyan-400 flex items-center justify-center font-bold text-cyan-400">SL</div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Sofia L.</p>
-                            <p class="text-xs text-cyan-400">Trader Independiente</p>
-                        </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-4 top-3.5 text-slate-500 text-sm"></i>
+                        <input type="password" required placeholder="••••••••" class="w-full bg-slate-950/80 border border-blue-900/50 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-all">
                     </div>
                 </div>
 
-                <div class="bg-slate-900/80 border border-blue-900/40 p-6 rounded-2xl relative space-y-4">
-                    <div class="flex text-cyan-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" class="rounded border-blue-900 bg-slate-950 text-cyan-500 focus:ring-0">
+                        <span>Recordar este equipo</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/30">
+                    Ingresar al Sistema <i class="fa-solid fa-arrow-right-to-bracket ml-2"></i>
+                </button>
+            </form>
+
+            <div id="form-register" class="space-y-6 hidden text-center py-2">
+                <div class="w-16 h-16 bg-blue-500/20 text-cyan-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-cyan-400/30 shadow-lg shadow-cyan-500/10">
+                    <i class="fa-paper-plane fa-solid"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-lg font-bold text-white">Apertura de Cuenta Asistida</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Para garantizar la máxima seguridad y verificación de tu perfil, la creación de usuarios la realiza directamente un <strong class="text-cyan-400">asesor profesional</strong>.
+                    </p>
+                </div>
+
+                <div class="bg-slate-950/80 border border-blue-900/40 p-4 rounded-xl text-left space-y-2 text-xs text-slate-400">
+                    <div class="flex items-center gap-2 text-slate-200 font-semibold">
+                        <i class="fa-solid fa-circle-check text-cyan-400"></i> Asignación de cuenta en minutos
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">"Inicié con una cuenta de prueba y el crecimiento fue sostenido. La interfaz es moderna, liviana y funciona perfecto en dispositivos móviles."</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-blue-600/40 border border-cyan-400 flex items-center justify-center font-bold text-cyan-400">DR</div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Diego R.</p>
-                            <p class="text-xs text-cyan-400">Inversor de Portafolio</p>
-                        </div>
+                    <div class="flex items-center gap-2 text-slate-200 font-semibold">
+                        <i class="fa-solid fa-circle-check text-cyan-400"></i> Asistencia personalizada 1 a 1
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="faq" class="py-20 px-6 max-w-4xl mx-auto border-t border-blue-900/30">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Preguntas Frecuentes</h2>
-            <p class="text-slate-400">Resolvemos tus dudas sobre el funcionamiento de Pix Broker.</p>
-        </div>
-
-        <div class="space-y-4">
-            <details class="group bg-slate-900/60 border border-blue-900/40 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
-                <summary class="flex items-center justify-between font-semibold text-white">
-                    <span>¿Cómo abro una cuenta en Pix Broker?</span>
-                    <span class="text-cyan-400 transition group-open:-rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="mt-4 text-sm text-slate-400 leading-relaxed">Solo tenés que hacer clic en "Comenzar" o "Abrir Cuenta", completar tus datos básicos en la pantalla de registro y podrás acceder a tu panel de control en pocos minutos.</p>
-            </details>
-
-            <details class="group bg-slate-900/60 border border-blue-900/40 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
-                <summary class="flex items-center justify-between font-semibold text-white">
-                    <span>¿Existen costos o comisiones por mantenimiento?</span>
-                    <span class="text-cyan-400 transition group-open:-rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="mt-4 text-sm text-slate-400 leading-relaxed">No cobramos mantenimiento de cuenta ni comisiones ocultas. Todas las tarifas por operación son informadas con total transparencia en la plataforma antes de ejecutar cualquier movimiento.</p>
-            </details>
-
-            <details class="group bg-slate-900/60 border border-blue-900/40 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
-                <summary class="flex items-center justify-between font-semibold text-white">
-                    <span>¿Qué tan seguros están mis fondos?</span>
-                    <span class="text-cyan-400 transition group-open:-rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="mt-4 text-sm text-slate-400 leading-relaxed">Utilizamos infraestructura de grado bancario con cifrado SSL de 256 bits y custodia segregada, asegurando que tus activos estén siempre resguardados bajo altos estándares de ciberseguridad.</p>
-            </details>
-
-            <details class="group bg-slate-900/60 border border-blue-900/40 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer transition-all">
-                <summary class="flex items-center justify-between font-semibold text-white">
-                    <span>¿Puedo retirar mis fondos en cualquier momento?</span>
-                    <span class="text-cyan-400 transition group-open:-rotate-180"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="mt-4 text-sm text-slate-400 leading-relaxed">Sí, podés solicitar el retiro de tus fondos disponibles 24/7 desde el panel de usuario (`resultados.html`) hacia tu cuenta bancaria o billetera configurada.</p>
-            </details>
-        </div>
-    </section>
-
-    <section class="py-12 border-t border-blue-900/30 bg-slate-950/80">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-8">Estándares de Seguridad y Partners de Custodia</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all text-slate-400 text-sm font-bold">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-lock text-xl text-cyan-400"></i> SSL 256-BIT</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-shield-cat text-xl text-blue-400"></i> ISO 27001</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-credit-card text-xl text-indigo-400"></i> PCI-DSS COMPLIANT</div>
-                <div class="flex items-center gap-2"><i class="fa-brands fa-cc-visa text-2xl"></i> VISA</div>
-                <div class="flex items-center gap-2"><i class="fa-brands fa-cc-mastercard text-2xl"></i> MASTERCARD</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 max-w-5xl mx-auto text-center">
-        <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 border border-blue-800/60 p-12 rounded-3xl shadow-2xl relative overflow-hidden">
-            <div class="relative z-10 space-y-6">
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">¿Listo para dar el siguiente paso?</h2>
-                <p class="text-slate-300 max-w-2xl mx-auto">Ingresá a tu cuenta o registrate para comenzar a explorar las operaciones del mercado en tiempo real.</p>
-                <a href="login.html" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold px-10 py-4 rounded-xl shadow-lg shadow-blue-600/30 transition-all">
-                    Ingresar al Sistema
+                <a href="https://t.me/ganaplatacondiego" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/30">
+                    <i class="fa-brands fa-telegram text-lg"></i> Contactar al Asesor en Telegram
                 </a>
             </div>
-        </div>
-    </section>
 
-    <footer class="py-10 text-center text-xs text-slate-500 border-t border-blue-950/80 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-            <p class="font-semibold text-slate-400">PIX BROKER</p>
-            <p>&copy; 2026 Pix Broker. Todos los derechos reservados. Invertir implica riesgos de capital.</p>
         </div>
+    </main>
+
+    <footer class="w-full max-w-md text-center py-4 text-xs text-slate-600">
+        <p>&copy; 2026 Pix Broker. Enrutamiento SSL de alta seguridad.</p>
     </footer>
+
+    <script>
+        function switchTab(type) {
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+
+            if (type === 'login') {
+                formLogin.classList.remove('hidden');
+                formRegister.classList.add('hidden');
+                tabLogin.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md';
+                tabRegister.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white';
+            } else {
+                formLogin.classList.add('hidden');
+                formRegister.classList.remove('hidden');
+                tabRegister.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-white bg-blue-600 shadow-md';
+                tabLogin.className = 'flex-1 py-2.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Evita recargar la página
+            // Simula el acceso exitoso y redirige a resultados.html
+            window.location.href = 'resultados.html';
+        }
+    </script>
 
 </body>
 </html>
