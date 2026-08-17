@@ -1,1 +1,21 @@
 
+[
+  {
+    "nombre": "Juan Pérez",
+    "usuario": "diego123",
+    "clave": "diego123",
+    "saldo": 150000,
+    "dni": "38456789",
+    "instagram": "@juanperez",
+    "telegram": "@juanperez_tg"
+  },
+  {
+    "nombre": "María González",
+    "usuario": "maria.gonzalez@hotmail.com",
+    "clave": "broker2026",
+    "saldo": 350000,
+    "dni": "40123456",
+    "instagram": "@mgonzalez",
+    "telegram": "@maria_gonzalez"
+  }
+]
