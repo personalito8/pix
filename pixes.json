@@ -8,6 +8,16 @@
     "dni": "38456789",
     "instagram": "@juanperez",
     "telegram": "@juanperez_tg"
+  },
+
+  {
+    "nombre": "Loreana Torta",
+    "usuario": "loreana123",
+    "clave": "loreana123",
+    "saldo": 1800000,
+    "dni": "47207823",
+    "instagram": "@torta_lore20",
+    "telegram": "@loreanatorta"
   }
   
 ]
