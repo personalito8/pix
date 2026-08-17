@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,8 +6,27 @@
     <title>Panel de Control | Pix Broker</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white min-h-screen flex flex-col pb-20 md:pb-0">
+
+    <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 border-b border-cyan-500/30 text-xs py-1.5 overflow-hidden relative z-40">
+        <div class="animate-ticker text-cyan-300 font-medium flex items-center gap-8">
+            <span><i class="fa-solid fa-bell text-amber-400 mr-1"></i> AVISO: Alta volatilidad esperada en BTC/USDT tras anuncio de la Reserva Federal.</span>
+            <span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> SISTEMA: Servidores SSL operando con enrutamiento de ultra baja latencia.</span>
+            <span><i class="fa-solid fa-circle-check text-cyan-400 mr-1"></i> RETIROS: Procesamiento prioritario activo vía CBU / CVU en minutos.</span>
+        </div>
+    </div>
 
     <div id="welcome-overlay" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center text-center p-6 transition-opacity duration-700">
         <div class="relative w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-400 rounded-2xl flex items-center justify-center p-4 mb-6 shadow-2xl shadow-cyan-500/30 animate-bounce">
@@ -26,6 +44,17 @@
                 <i class="fa-solid fa-bolt text-cyan-400 text-lg"></i>
             </div>
             <span class="text-lg font-black tracking-wider">PIX <span class="text-cyan-400">BROKER</span></span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-4 bg-slate-950/80 border border-blue-900/50 px-3 py-1.5 rounded-xl text-xs">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-emerald-400 font-bold uppercase">Mercado Abierto</span>
+            </div>
+            <div class="text-slate-400 border-l border-slate-800 pl-3">
+                <i class="fa-regular fa-clock mr-1 text-cyan-400"></i>
+                <span id="market-clock" class="font-mono text-slate-200">00:00:00 UTC-3</span>
+            </div>
         </div>
 
         <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-950 border border-blue-900/60 rounded-xl flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all focus:outline-none">
@@ -69,12 +98,18 @@
     <main class="flex-1 max-w-5xl w-full mx-auto p-4 md:p-6 space-y-6">
 
         <section id="sec-inicio" class="space-y-6">
-            <div class="bg-gradient-to-r from-slate-900 via-blue-950/60 to-slate-900 p-6 rounded-3xl border border-blue-900/50 shadow-xl relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <p class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-1">Panel del Trader</p>
-                <h2 class="text-2xl md:text-3xl font-black text-white">
-                    Bienvenido <span id="user-display-name" class="text-cyan-400">Cargando...</span>
-                </h2>
+            <div class="bg-gradient-to-r from-slate-900 via-blue-950/60 to-slate-900 p-6 rounded-3xl border border-blue-900/50 shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-1">Panel del Trader</p>
+                    <h2 class="text-2xl md:text-3xl font-black text-white">
+                        Bienvenido <span id="user-display-name" class="text-cyan-400">Cargando...</span>
+                    </h2>
+                </div>
+
+                <div class="md:hidden flex items-center gap-2 text-xs text-slate-400 bg-slate-950/60 p-2.5 rounded-xl border border-blue-900/30">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="market-clock-mobile" class="font-mono">00:00:00</span> - <span class="text-emerald-400 font-bold">Mercado Abierto</span>
+                </div>
             </div>
 
             <div class="bg-gradient-to-br from-blue-900/90 via-slate-900 to-slate-950 p-6 md:p-8 rounded-3xl border-2 border-cyan-500/40 shadow-2xl shadow-cyan-500/10 relative overflow-hidden">
@@ -105,37 +140,65 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
-                    <div class="w-10 h-10 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
+            <div class="bg-slate-900/90 border border-blue-900/50 p-6 rounded-3xl shadow-xl space-y-4">
+                <div class="flex items-center justify-between border-b border-blue-900/40 pb-3">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-bolt-lightning text-amber-400"></i> Panel de Operación Rápida
+                    </h3>
+                    <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/30">BTC/USDT</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <p class="text-xs text-slate-400">Estado de Cuenta</p>
-                        <p class="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Verificado
-                        </p>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-2">Monto a Invertir (ARS)</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3 text-slate-500 font-bold">$</span>
+                            <input id="trade-amount" type="number" value="5000" min="1000" step="1000" class="w-full bg-slate-950 border border-blue-900/60 rounded-xl py-2.5 pl-9 pr-4 text-sm font-mono text-slate-100 focus:outline-none focus:border-cyan-400">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-2">Temporalidad</label>
+                        <select id="trade-time" class="w-full bg-slate-950 border border-blue-900/60 rounded-xl py-2.5 px-4 text-sm text-slate-100 focus:outline-none focus:border-cyan-400">
+                            <option value="60">1 Minuto (Retorno 85%)</option>
+                            <option value="180">3 Minutos (Retorno 88%)</option>
+                            <option value="300">5 Minutos (Retorno 92%)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
-                    <div class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 rounded-xl flex items-center justify-center text-cyan-400">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-slate-400">Asesor Directo</p>
-                        <p class="text-sm font-bold text-white">Activo 24/7</p>
-                    </div>
-                </div>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <button onclick="ejecutarOperacion('CALL')" class="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-black py-4 rounded-2xl shadow-lg shadow-emerald-600/20 transition-all flex flex-col items-center justify-center gap-1">
+                        <span class="text-sm uppercase tracking-wider flex items-center gap-2"><i class="fa-solid fa-arrow-trend-up text-lg"></i> SUBIR</span>
+                        <span class="text-[10px] font-normal opacity-90">Predicción Alcista (CALL)</span>
+                    </button>
 
-                <div class="bg-slate-900/80 border border-blue-900/40 p-4 rounded-2xl flex items-center gap-4">
-                    <div class="w-10 h-10 bg-blue-500/10 border border-blue-500/30 rounded-xl flex items-center justify-center text-blue-400">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs text-slate-400">Conexión Broker</p>
-                        <p class="text-sm font-bold text-white">Ultra Rápida</p>
-                    </div>
+                    <button onclick="ejecutarOperacion('PUT')" class="bg-gradient-to-r from-red-600 to-rose-500 hover:from-red-500 hover:to-rose-400 text-white font-black py-4 rounded-2xl shadow-lg shadow-red-600/20 transition-all flex flex-col items-center justify-center gap-1">
+                        <span class="text-sm uppercase tracking-wider flex items-center gap-2"><i class="fa-solid fa-arrow-trend-down text-lg"></i> BAJAR</span>
+                        <span class="text-[10px] font-normal opacity-90">Predicción Bajista (PUT)</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/90 border border-blue-900/50 p-6 rounded-3xl shadow-xl space-y-4">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clock-rotate-left text-cyan-400"></i> Historial de Operaciones
+                </h3>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-950 text-slate-400 uppercase font-semibold border-b border-blue-900/40">
+                            <tr>
+                                <th class="p-3">Activo</th>
+                                <th class="p-3">Tipo</th>
+                                <th class="p-3">Monto</th>
+                                <th class="p-3">Hora</th>
+                                <th class="p-3">Resultado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody" class="divide-y divide-blue-900/20 font-mono">
+                            </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -215,6 +278,18 @@
 
     </main>
 
+    <div id="audit-toast" class="fixed bottom-4 left-4 z-50 transform translate-y-20 opacity-0 transition-all duration-500 pointer-events-none max-w-xs w-full">
+        <div class="bg-slate-900/95 border border-cyan-500/40 p-3.5 rounded-2xl shadow-2xl backdrop-blur-md flex items-center gap-3">
+            <div id="toast-icon" class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+            <div class="text-xs space-y-0.5">
+                <p id="toast-text" class="text-slate-200 font-medium"><strong class="text-white">Máximo</strong> retiró <span class="text-emerald-400 font-bold">$4.000.000</span></p>
+                <p id="toast-time" class="text-[10px] text-slate-500">Hace instantes • Verificado por Pix Broker</p>
+            </div>
+        </div>
+    </div>
+
     <footer class="border-t border-blue-900/40 py-4 text-center text-xs text-slate-600 mt-auto">
         <p>&copy; 2026 Pix Broker. Panel del Trader Registrado.</p>
     </footer>
@@ -223,21 +298,27 @@
         let usuarioActual = null;
         let saldoVisible = true;
         let saldoReal = 0;
+        let historialOperaciones = [];
 
-        // AL CARGAR LA PÁGINA
+        // BASE DE DATOS DE NOMBRES Y ACCIONES PARA LA AUDITORÍA DINÁMICA (+1000 VARIACIONES)
+        const nombresAudit = ["Máximo", "Lucía", "Joaquín", "Mateo", "Valentina", "Sofía", "Gonzalo", "Lucas", "Camila", "Agustín", "Santiago", "Nicolás", "Martina", "Bautista", "Facundo", "Rocío", "Ignacio", "Franco", "Delfina", "Matias", "Julian", "Esteban", "Tomas", "Federico", "Marcos"];
+        const tiposAudit = [
+            { tipo: "retiro", plantilla: (nombre, monto) => `<strong class="text-white">${nombre}</strong> retiró <span class="text-emerald-400 font-bold">$${monto}</span>`, icon: "fa-arrow-up-right-from-square", color: "text-emerald-400 bg-emerald-500/20 border-emerald-500/30" },
+            { tipo: "deposito", plantilla: (nombre, monto) => `<strong class="text-white">${nombre}</strong> cargó saldo por <span class="text-cyan-400 font-bold">$${monto}</span>`, icon: "fa-wallet", color: "text-cyan-400 bg-cyan-500/20 border-cyan-500/30" },
+            { tipo: "ganancia", plantilla: (nombre, monto) => `<strong class="text-white">${nombre}</strong> ganó <span class="text-emerald-400 font-bold">+$${monto}</span> en BTC/USDT`, icon: "fa-circle-dollar-to-slot", color: "text-emerald-400 bg-emerald-500/20 border-emerald-500/30" }
+        ];
+
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Ocultar bienvenida animada después de 2.5 segundos
+            // 1. Ocultar overlay
             setTimeout(() => {
                 const overlay = document.getElementById('welcome-overlay');
                 overlay.classList.add('opacity-0');
                 setTimeout(() => overlay.remove(), 700);
             }, 2500);
 
-            // 2. Cargar datos desde localStorage
+            // 2. Cargar sesión
             const sessionData = localStorage.getItem('usuarioLogueado');
-
             if (!sessionData) {
-                // Si no hay usuario logueado, redirige a login.html
                 window.location.href = 'login.html';
                 return;
             }
@@ -245,20 +326,146 @@
             usuarioActual = JSON.parse(sessionData);
             saldoReal = usuarioActual.saldo || 0;
 
-            // 3. Renderizar datos en pantalla
+            // Renderizar datos del perfil
             document.getElementById('user-display-name').textContent = usuarioActual.nombre || usuarioActual.usuario;
             actualizarSaldoDisplay();
 
-            // Cargar datos en Mi Perfil
             document.getElementById('profile-nombre').textContent = usuarioActual.nombre || 'No registrado';
             document.getElementById('profile-usuario').textContent = usuarioActual.usuario || 'No registrado';
             document.getElementById('profile-dni').textContent = usuarioActual.dni || 'No registrado';
             document.getElementById('profile-instagram').textContent = usuarioActual.instagram || 'No registrado';
             document.getElementById('profile-telegram').textContent = usuarioActual.telegram || 'No registrado';
             document.getElementById('profile-saldo').textContent = `$${Number(saldoReal).toLocaleString('es-AR')} ARS`;
+
+            // Cargar historial inicial simulado
+            historialOperaciones = [
+                { activo: 'BTC/USDT', tipo: 'CALL', monto: 10000, hora: '10:12', resultado: '+$8.500 (Ganada)', estado: 'win' },
+                { activo: 'BTC/USDT', tipo: 'PUT', monto: 5000, hora: '09:45', resultado: '+$4.250 (Ganada)', estado: 'win' }
+            ];
+            renderHistorial();
+
+            // Iniciar Reloj
+            setInterval(actualizarReloj, 1000);
+            actualizarReloj();
+
+            // Iniciar Bucle de Auditorías Flotantes
+            iniciarAuditoriaDinamica();
         });
 
-        // Alternar Menú Hamburguesa
+        // RELOJ DE MERCADO EN TIEMPO REAL
+        function actualizarReloj() {
+            const ahora = new Date();
+            const opciones = { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const horaStr = ahora.toLocaleTimeString('es-AR', opciones) + ' ART';
+            
+            if(document.getElementById('market-clock')) document.getElementById('market-clock').textContent = horaStr;
+            if(document.getElementById('market-clock-mobile')) document.getElementById('market-clock-mobile').textContent = horaStr;
+        }
+
+        // OPERACIONES RÁPIDAS (TRADING SIMULADO)
+        function ejecutarOperacion(tipo) {
+            const montoInput = document.getElementById('trade-amount');
+            const monto = parseFloat(montoInput.value);
+
+            if (isNaN(monto) || monto <= 0) {
+                alert('Ingrese un monto válido para operar.');
+                return;
+            }
+
+            if (monto > saldoReal) {
+                alert('Saldo insuficiente para esta operación.');
+                return;
+            }
+
+            // Descontar monto
+            saldoReal -= monto;
+            actualizarSaldoDisplay();
+
+            const ahora = new Date();
+            const horaStr = ahora.getHours().toString().padStart(2, '0') + ':' + ahora.getMinutes().toString().padStart(2, '0');
+
+            // Agregar a historial en estado "En curso"
+            const nuevaOp = { activo: 'BTC/USDT', tipo: tipo, monto: monto, hora: horaStr, resultado: 'En Curso...', estado: 'pending' };
+            historialOperaciones.unshift(nuevaOp);
+            renderHistorial();
+
+            // Simular resultado a los 3 segundos
+            setTimeout(() => {
+                const ganancia = monto * 1.85;
+                saldoReal += ganancia;
+                actualizarSaldoDisplay();
+
+                // Actualizar localstorage
+                usuarioActual.saldo = saldoReal;
+                localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioActual));
+
+                nuevaOp.resultado = `+$${(ganancia - monto).toLocaleString('es-AR')} (Ganada)`;
+                nuevaOp.estado = 'win';
+                renderHistorial();
+            }, 3000);
+        }
+
+        function renderHistorial() {
+            const tbody = document.getElementById('history-tbody');
+            tbody.innerHTML = '';
+
+            historialOperaciones.forEach(op => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-blue-900/20 hover:bg-slate-900/50';
+
+                const badgeTipo = op.tipo === 'CALL' 
+                    ? `<span class="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">SUBIR</span>`
+                    : `<span class="text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/30">BAJAR</span>`;
+
+                const resColor = op.estado === 'win' ? 'text-emerald-400 font-bold' : (op.estado === 'pending' ? 'text-amber-400 animate-pulse' : 'text-rose-400');
+
+                tr.innerHTML = `
+                    <td class="p-3 font-semibold text-white">${op.activo}</td>
+                    <td class="p-3">${badgeTipo}</td>
+                    <td class="p-3">$${op.monto.toLocaleString('es-AR')}</td>
+                    <td class="p-3 text-slate-400">${op.hora}</td>
+                    <td class="p-3 ${resColor}">${op.resultado}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // POPUP DINÁMICO DE AUDITORÍA (+1000 VARIACIONES)
+        function iniciarAuditoriaDinamica() {
+            setInterval(() => {
+                const toast = document.getElementById('audit-toast');
+                const textElem = document.getElementById('toast-text');
+                const timeElem = document.getElementById('toast-time');
+                const iconElem = document.getElementById('toast-icon');
+
+                // Selección aleatoria
+                const nombre = nombresAudit[Math.floor(Math.random() * nombresAudit.length)];
+                const plantillaObj = tiposAudit[Math.floor(Math.random() * tiposAudit.length)];
+                
+                // Generar monto aleatorio realista (entre 50,000 y 4,500,000)
+                const montoRaw = Math.floor(Math.random() * 89 + 1) * 50000;
+                const montoFormatted = montoRaw.toLocaleString('es-AR');
+
+                // Minutos aleatorios
+                const mins = Math.floor(Math.random() * 5) + 1;
+
+                textElem.innerHTML = plantillaObj.plantilla(nombre, montoFormatted);
+                timeElem.textContent = `Hace ${mins} min • Auditoría Pix Broker`;
+                iconElem.className = `w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border ${plantillaObj.color}`;
+                iconElem.innerHTML = `<i class="fa-solid ${plantillaObj.icon}"></i>`;
+
+                // Mostrar toast
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                
+                // Ocultar tras 4 segundos
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 4000);
+
+            }, 9000); // Se dispara cada 9 segundos
+        }
+
+        // FUNCIONES GENERALES DEL DASHBOARD
         function toggleMenu() {
             const sideMenu = document.getElementById('side-menu');
             const backdrop = document.getElementById('menu-backdrop');
@@ -274,24 +481,15 @@
             }
         }
 
-        // Cambiar entre Secciones (Inicio, Mercado, Perfil)
         function showSection(section) {
             document.getElementById('sec-inicio').classList.add('hidden');
             document.getElementById('sec-mercado').classList.add('hidden');
             document.getElementById('sec-perfil').classList.add('hidden');
 
             document.getElementById(`sec-${section}`).classList.remove('hidden');
-
-            // Actualizar estilo de botones del menú
-            const buttons = document.querySelectorAll('.menu-btn');
-            buttons.forEach(btn => {
-                btn.className = 'menu-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:bg-slate-950 hover:text-cyan-400';
-            });
-
-            toggleMenu(); // Cerrar menú
+            toggleMenu();
         }
 
-        // Ocultar/Mostrar Saldo
         function toggleSaldoVisibilidad() {
             saldoVisible = !saldoVisible;
             actualizarSaldoDisplay();
@@ -310,7 +508,6 @@
             }
         }
 
-        // Cerrar Sesión
         function cerrarSesion() {
             localStorage.removeItem('usuarioLogueado');
             window.location.href = 'login.html';
